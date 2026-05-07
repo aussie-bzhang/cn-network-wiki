@@ -1,0 +1,112 @@
+site_name: Computer Networks LLM Wiki
+site_description: >
+  Xie Xiren · Computer Networks (8th ed.) — LLM Wiki knowledge base
+  distilled from 1,590 lecture slides. Course materials courtesy of
+  Dr. Yang Xingguang, NingboTech University.
+site_author: Bailing Zhang, NingboTech University
+repo_url: https://github.com/aussie-bzhang/cn-network-wiki
+repo_name: cn-network-wiki
+site_url: https://aussie-bzhang.github.io/cn-network-wiki
+copyright: >
+  Content CC BY-NC 4.0 · Slides © Yang Xingguang / NingboTech University ·
+  Built with MkDocs-Material
+
+theme:
+  name: material
+  language: en
+  favicon: https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f310.svg
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - toc.integrate
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ja        # enables CJK segmentation for Chinese wiki entries
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - tables
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/aussie-bzhang/cn-network-wiki
+      name: GitHub Repository
+
+nav:
+  - Home: index.md
+  - Chapters:
+    - Ch.1  Overview: wiki/01-概述.md
+    - Ch.2  Physical Layer: wiki/02-物理层.md
+    - Ch.3  Data Link Layer: wiki/03-数据链路层.md
+    - Ch.4  Network Layer: wiki/04-网络层.md
+    - Ch.5  Transport Layer: wiki/05-运输层.md
+    - Ch.6  Application Layer: wiki/06-应用层.md
+    - Ch.7  Network Security: wiki/07-网络安全.md
+    - Ch.8  Multimedia Networking: wiki/08-音视频服务.md
+    - Ch.9  Wireless & Mobile: wiki/09-无线网络.md
+  - Concept Entries:
+    - Packet Switching: wiki/分组交换.md
+    - TCP Three-Way Handshake: wiki/TCP三次握手.md
+    - TCP Congestion Control: wiki/TCP拥塞控制.md
+    - UDP Protocol: wiki/UDP协议.md
+    - IP Addressing & CIDR: wiki/IP地址与CIDR.md
+    - Subnet Division: wiki/子网划分.md
+    - ARP Protocol: wiki/ARP地址解析协议.md
+    - DNS Resolution: wiki/DNS解析流程.md
+    - CSMA/CD: wiki/CSMA_CD.md
+    - CSMA/CA: wiki/CSMA_CA.md
+    - TLS Handshake: wiki/TLS握手.md
+    - LTE Architecture: wiki/LTE网络架构.md
+    - OSI vs TCP/IP: wiki/OSI七层模型与TCP_IP.md
+    - Ethernet & MAC: wiki/以太网与MAC地址.md
+    - Delay Model: wiki/时延模型.md
+    - Nyquist & Shannon: wiki/奈奎斯特定理与香农定理.md
+    - CDMA Multiplexing: wiki/CDMA码分复用.md
+    - CRC Error Detection: wiki/CRC循环冗余校验.md
+  - Acknowledgements: acknowledgements.md

@@ -1,0 +1,43 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#MOC",
+      "color": {
+        "a": 1,
+        "rgb": 2867584
+      }
+    },
+    {
+      "query": "path:wiki/ tag:#chapter",
+      "color": {
+        "a": 1,
+        "rgb": 2727935
+      }
+    },
+    {
+      "query": "path:wiki/ tag:#concept",
+      "color": {
+        "a": 1,
+        "rgb": 15358996
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.8,
+  "lineSizeMultiplier": 1.2,
+  "centerStrength": 0.52,
+  "repelStrength": 12,
+  "linkStrength": 1,
+  "linkDistance": 280,
+  "scale": 1,
+  "close": false
+}
