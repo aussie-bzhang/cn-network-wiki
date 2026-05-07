@@ -1,0 +1,2165 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Xie Xiren · Computer Networks (8th ed.) — LLM Wiki knowledge base distilled from 1,590 lecture slides. Course materials courtesy of Dr. Yang Xingguang, NingboTech University.
+">
+      
+      
+        <meta name="author" content="Bailing Zhang, NingboTech University">
+      
+      
+        <link rel="canonical" href="https://aussie-bzhang.github.io/cn-network-wiki/wiki/07-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">
+      
+      
+        <link rel="prev" href="../06-%E5%BA%94%E7%94%A8%E5%B1%82/">
+      
+      
+        <link rel="next" href="../08-%E9%9F%B3%E8%A7%86%E9%A2%91%E6%9C%8D%E5%8A%A1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f310.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>第7章 网络安全 - Computer Networks LLM Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Computer Networks LLM Wiki" class="md-header__button md-logo" aria-label="Computer Networks LLM Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Computer Networks LLM Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第7章 网络安全
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aussie-bzhang/cn-network-wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cn-network-wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-%E6%A6%82%E8%BF%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Chapters
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concept Entries
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../acknowledgements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acknowledgements
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Computer Networks LLM Wiki" class="md-nav__button md-logo" aria-label="Computer Networks LLM Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Computer Networks LLM Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aussie-bzhang/cn-network-wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cn-network-wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.1  Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-%E7%89%A9%E7%90%86%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.2  Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.3  Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.4  Network Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-%E8%BF%90%E8%BE%93%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.5  Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-%E5%BA%94%E7%94%A8%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.6  Application Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.7  Network Security
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.7  Network Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        章节概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心概念索引
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 网络安全威胁
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 网络安全威胁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两大类攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全目标（四个）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 两类密码体制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 两类密码体制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥密码体制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="对称密钥密码体制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#des" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DES（数据加密标准）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3desdes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3DES（三重DES）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AES（高级加密标准）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥密码体制（非对称）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 鉴别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 鉴别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文鉴别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="报文鉴别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法1：数字签名（原理）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法2：密码散列函数（Hash）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法3：报文鉴别码 MAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        综合方案：已签名的MAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实体鉴别
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 密钥分配
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 密钥分配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥分配：KDC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥分配：CA与数字证书
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 互联网安全协议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 互联网安全协议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipsec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPSec（网络层）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TLS/SSL（运输层）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PGP（应用层，电子邮件）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 防火墙与入侵检测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6 防火墙与入侵检测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防火墙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入侵检测系统 IDS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 未来发展方向
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参见
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-%E9%9F%B3%E8%A7%86%E9%A2%91%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.8  Multimedia Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch.9  Wireless & Mobile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept Entries
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept Entries
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packet Switching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCP Three-Way Handshake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCP Congestion Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UDP%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UDP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IP%E5%9C%B0%E5%9D%80%E4%B8%8ECIDR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IP Addressing & CIDR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subnet Division
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARP%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ARP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DNS%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNS Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CSMA_CD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSMA/CD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CSMA_CA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSMA/CA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TLS%E6%8F%A1%E6%89%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Handshake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LTE%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LTE Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%8ETCP_IP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSI vs TCP/IP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ethernet & MAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%97%B6%E5%BB%B6%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delay Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%AE%9A%E7%90%86%E4%B8%8E%E9%A6%99%E5%86%9C%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nyquist & Shannon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CDMA%E7%A0%81%E5%88%86%E5%A4%8D%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDMA Multiplexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRC Error Detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acknowledgements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Acknowledgements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="7">第7章 网络安全</h1>
+<h2 id="_1">章节概述</h2>
+<p>本章从威胁分析出发，系统讲解密码学基础（对称/公钥体制）、鉴别机制（散列函数、MAC、数字签名）、密钥分配（KDC/Kerberos/PKI）、各层安全协议（IPSec/TLS/PGP）及系统防护（防火墙/IDS）。第8版新增：椭圆曲线密码（ECC）、TLS 1.3、量子密码展望。</p>
+<h2 id="_2">核心概念索引</h2>
+<ul>
+<li>[[07-网络安全|安全威胁]]</li>
+<li>[[07-网络安全|对称加密]] — DES / 3DES / AES</li>
+<li>[[07-网络安全|公钥密码体制]] — RSA</li>
+<li>[[07-网络安全|散列函数]] — MD5 / SHA-256</li>
+<li>[[07-网络安全|数字签名]]</li>
+<li>[[07-网络安全|MAC]]</li>
+<li>[[07-网络安全|密钥分配]] — KDC / Kerberos / CA / PKI</li>
+<li>[[07-网络安全|IPSec]] — AH / ESP / SA</li>
+<li>[[TLS握手|TLS/SSL]] — 握手 / 记录协议</li>
+<li>[[07-网络安全|PGP]]</li>
+<li>[[07-网络安全|防火墙]] — 分组过滤 / 应用网关</li>
+<li>[[07-网络安全|IDS]]</li>
+</ul>
+<hr />
+<h2 id="71">7.1 网络安全威胁</h2>
+<h3 id="_3">两大类攻击</h3>
+<p><strong>被动攻击（passive attack）</strong>：
+- <strong>截获（interception）</strong>：窃听通信内容
+- <strong>流量分析（traffic analysis）</strong>：分析通信模式
+- 特点：通常<strong>检测不出来</strong>，必须通过加密预防</p>
+<p><strong>主动攻击（active attack）</strong>：
+- <strong>篡改</strong>：故意修改传输的报文
+- <strong>恶意程序</strong>：病毒、蠕虫、特洛伊木马、逻辑炸弹、后门、流氓软件
+- <strong>拒绝服务 DoS</strong>：向服务器发送大量分组使其瘫痪
+- <strong>DDoS（分布式拒绝服务）</strong>：成百上千网站同时攻击一个目标
+- 特点：<strong>可以检测</strong>，但难以防止</p>
+<h3 id="_4">安全目标（四个）</h3>
+<ol>
+<li><strong>保密性</strong>：只有收发双方能理解内容（对付被动攻击）</li>
+<li><strong>端点鉴别</strong>：验证通信方真实身份</li>
+<li><strong>信息完整性</strong>：内容未被篡改</li>
+<li><strong>运行安全性</strong>：系统能正常提供服务（访问控制）</li>
+</ol>
+<p><strong>加密模型</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>明文X → [加密算法E + 密钥KE] → 密文Y → [解密算法D + 密钥KD] → 明文X
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Y = EKE(X)    X = DKD(Y)
+</code></pre></div></p>
+<hr />
+<h2 id="72">7.2 两类密码体制</h2>
+<h3 id="_5">对称密钥密码体制</h3>
+<p>加密密钥 = 解密密钥（同一把密钥）</p>
+<h4 id="des">DES（数据加密标准）</h4>
+<ul>
+<li>分组密码，每组64位，密钥64位（<strong>有效56位</strong>，8位奇偶校验）</li>
+<li>已不安全：专用芯片可暴力破解56位密钥</li>
+</ul>
+<h4 id="3desdes">3DES（三重DES）</h4>
+<p>$<span class="arithmatex">\(C = E_{K1}(D_{K2}(E_{K1}(P)))\)</span>$
+使用两个56位密钥（有效112位），更安全但速度慢</p>
+<h4 id="aes">AES（高级加密标准）</h4>
+<ul>
+<li><strong>2002年成为美国政府标准</strong>，现为ISO/IEC 18033-3</li>
+<li>分组长度128位，密钥128/192/256位</li>
+<li>比3DES快得多，安全性更强，支持硬件加速</li>
+</ul>
+<h3 id="_6">公钥密码体制（非对称）</h3>
+<p>每个用户有一对密钥：
+- <strong>公钥（PK，public key）</strong>：公开发布
+- <strong>私钥（SK，secret key）</strong>：严格保密</p>
+<p><strong>五个特性</strong>：
+1. 密钥对由密钥对产生器生成
+2. 发送方用接收方<strong>公钥</strong>加密 → 只有接收方<strong>私钥</strong>能解密
+3. 从PK无法推导出SK（"计算上不可能"）
+4. 加密密钥不能解密
+5. 加解密互逆：<span class="arithmatex">\(D_{SK}(E_{PK}(X)) = X\)</span> 且 <span class="arithmatex">\(E_{PK}(D_{SK}(X)) = X\)</span></p>
+<p><strong>RSA算法</strong>（基于大数分解难题）：
+- 选大素数 <span class="arithmatex">\(p, q\)</span>，令 <span class="arithmatex">\(n = pq\)</span>
+- <span class="arithmatex">\(\phi(n) = (p-1)(q-1)\)</span>，选 <span class="arithmatex">\(e\)</span> 使 <span class="arithmatex">\(\gcd(e, \phi(n)) = 1\)</span>
+- 计算 <span class="arithmatex">\(d\)</span>：<span class="arithmatex">\(ed \equiv 1 \pmod{\phi(n)}\)</span>
+- 公钥 <span class="arithmatex">\((e, n)\)</span>，私钥 <span class="arithmatex">\((d, n)\)</span>
+- 加密：<span class="arithmatex">\(C = M^e mod n\)</span>；解密：<span class="arithmatex">\(M = C^d mod n\)</span></p>
+<p><strong>实用方案</strong>：用RSA加密<strong>会话密钥</strong>，用会话密钥进行<strong>对称加密</strong>（兼顾安全性与效率）</p>
+<p><strong>对称密钥 vs 公钥比较</strong>：
+- 对称密钥：一对一双向保密，<span class="arithmatex">\(n\)</span>个用户需要 <span class="arithmatex">\(n(n-1)/2\)</span> 个密钥
+- 公钥：多对一单向保密，<span class="arithmatex">\(n\)</span>个用户只需 <span class="arithmatex">\(n\)</span> 对密钥</p>
+<hr />
+<h2 id="73">7.3 鉴别</h2>
+<h3 id="_7">报文鉴别</h3>
+<h4 id="1">方法1：数字签名（原理）</h4>
+<p>用发送方<strong>私钥</strong>对报文加密，任何人用发送方<strong>公钥</strong>可验证：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>发送方A：X → D_SKA(X) = 签名报文
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>接收方B：E_PKA(D_SKA(X)) = X → 验证成功
+</code></pre></div>
+问题：每次对整个大报文加密，开销太大。</p>
+<h4 id="2hash">方法2：密码散列函数（Hash）</h4>
+<p>特性：
+1. 输出长度短且<strong>固定</strong>（MD5：128位，SHA-256：256位）
+2. <strong>抗碰撞</strong>：不同输入产生相同输出（碰撞）极难
+3. <strong>单向函数</strong>：不能由输出推导输入
+4. 雪崩效应：输入微小变化→输出大幅变化</p>
+<p><strong>MD5现状</strong>：2004年中国学者<strong>王小云</strong>证明可系统性找出MD5碰撞，仅需15分钟，MD5已被淘汰。</p>
+<p><strong>SHA系列</strong>：
+- SHA-1（160位）：也被王小云团队和Google攻破，已停用
+- <strong>SHA-2</strong>（SHA-256/384/512）：当前标准
+- <strong>SHA-3</strong>：采用完全不同算法（Keccak），更安全</p>
+<h4 id="3-mac">方法3：报文鉴别码 MAC</h4>
+<p>解决散列函数不能防伪造的问题：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>发送方A：H(X + K) = MAC  → 发送(X, MAC)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>接收方B：计算H(X + K)，比较 → 若相同则报文来自A
+</code></pre></div>
+<p><strong>只要攻击者不知道密钥K，就无法伪造MAC</strong>。MAC运算比加密快，消耗资源少。</p>
+<p><strong>HMAC</strong>（Keyed-Hash MAC）：与基本MAC的计算方式不同，更安全。</p>
+<h4 id="mac">综合方案：已签名的MAC</h4>
+<p>对<strong>散列值</strong>（而非整个报文）用私钥签名，兼顾效率和不可抵赖性。</p>
+<h3 id="_8">实体鉴别</h3>
+<p>与报文鉴别的区别：
+- <strong>报文鉴别</strong>：每个报文都要鉴别来源
+- <strong>实体鉴别</strong>：对通信实体一次性验证身份（整个会话期间有效）</p>
+<p><strong>重放攻击（Replay Attack）</strong>：攻击者C截获A的鉴别报文，直接发给B冒充A。</p>
+<p><strong>防重放：不重数（Nonce）</strong>：
+- 一次性使用的大随机数
+- B发给A一个不重数R，A用密钥加密R回传
+- 由于每次不重数不同，重放的旧报文无效</p>
+<p><strong>公钥体制的中间人攻击风险</strong>：
+- C可伪造自己的公钥PKC冒充A
+- <strong>根本解决</strong>：可信第三方CA认证公钥的真实性</p>
+<hr />
+<h2 id="74">7.4 密钥分配</h2>
+<h3 id="kdc">对称密钥分配：KDC</h3>
+<p><strong>密钥分配中心 KDC (Key Distribution Center)</strong>：
+- 每个用户与KDC之间有一个<strong>主密钥（master key）</strong>
+- KDC临时生成<strong>会话密钥（session key）</strong> KAB 分配给A和B
+- 会话密钥是一次性的（一次通信用完即弃）
+- KDC分配给用户的密钥应定期更换</p>
+<p><strong>Kerberos V5</strong>：
+- 同时是鉴别协议和KDC的实现，互联网建议标准
+- 使用AES加密
+- 两个服务器：<strong>鉴别服务器AS</strong> + <strong>票据授予服务器TGS</strong>
+- 要求所有主机时钟<strong>松散同步（误差不超过5分钟）</strong>，防重放攻击</p>
+<h3 id="ca">公钥分配：CA与数字证书</h3>
+<p><strong>认证中心 CA (Certification Authority)</strong>：可信第三方，负责签发数字证书，一般由政府出资建立。</p>
+<p><strong>数字证书</strong>（= 公钥证书）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>证书内容 = 持有者信息（名称、地址、邮件等）+ 持有者公钥 + 有效期
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>数字证书 = 证书内容 + CA用自己私钥的数字签名
+</code></pre></div></p>
+<p><strong>验证证书</strong>：
+1. 用CA公钥对证书的CA签名做E运算 → 得摘要1
+2. 对证书内容做散列运算 → 得摘要2
+3. 摘要1 = 摘要2 → 证书真实有效</p>
+<p><strong>X.509 / PKI（互联网公钥基础设施）</strong>：
+- 树状认证层级：<strong>根CA</strong> → 中间CA → 用户证书
+- <strong>信任链（Chain of Trust）</strong>：从根CA向下的所有链接
+- 根CA证书是<strong>自签名</strong>的（自己的私钥签自己）
+- 证书可<strong>过期</strong>（有效期）或<strong>吊销</strong>（CRL证书撤销列表，用CA私钥签名）</p>
+<hr />
+<h2 id="75">7.5 互联网安全协议</h2>
+<h3 id="ipsec">IPSec（网络层）</h3>
+<p>IPSec是协议族，非单一协议，为IP层提供安全：</p>
+<p><strong>三个核心部分</strong>：
+1. <strong>AH（鉴别首部）</strong>：源点鉴别 + 数据完整性，<strong>不加密</strong>
+2. <strong>ESP（封装安全有效载荷）</strong>：源点鉴别 + 完整性 + <strong>加密</strong>（AH功能的超集）
+3. <strong>IKE（互联网密钥交换）</strong>：为IP安全数据报创建安全关联SA</p>
+<p><strong>安全关联 SA (Security Association)</strong>：
+- IPSec把无连接网络层转为有逻辑连接的层
+- SA是<strong>单向连接</strong>，双向通信需建立两个SA
+- SA包含：SPI（32位标识）、端点IP、加密类型、密钥、完整性检查类型</p>
+<p><strong>两种工作模式</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>适用场景</th>
+<th>加密范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输模式（Transport）</td>
+<td>端到端（主机间）</td>
+<td>IP数据部分</td>
+</tr>
+<tr>
+<td>隧道模式（Tunnel）</td>
+<td>VPN（路由器间）</td>
+<td>整个原始IP数据报</td>
+</tr>
+</tbody>
+</table>
+<p>隧道模式中，新IP首部的源/目的地址是<strong>路由器</strong>地址，内部IP首部是<strong>主机</strong>地址。</p>
+<p><strong>IKEv2</strong>基于三个协议：Oakley（密钥生成）+ SKEME（公钥鉴别）+ ISAKMP（框架）</p>
+<h3 id="tlsssl">TLS/SSL（运输层）</h3>
+<ul>
+<li><strong>SSL</strong>：Netscape 1994年开发，在TCP之上，为应用层提供安全通道</li>
+<li><strong>TLS 1.0</strong>：IETF 1999年基于SSL 3.0设计</li>
+<li><strong>TLS 1.3（2018）</strong>：使用椭圆曲线密码ECC + AES，添加0-RTT，禁止弱算法</li>
+</ul>
+<p><strong>TLS工作位置</strong>：TCP之上，应用层（HTTP）之下
+- 发送方：应用层数据 → TLS加密 → TCP套接字
+- 接收方：TCP套接字 → TLS解密 → 应用层
+- HTTPS = HTTP + TLS（端口443）</p>
+<p><strong>握手阶段（建立安全连接）</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>1. 协商加密算法：浏览器A → 服务器B（支持的TLS版本和加密套件列表）
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>2. 服务器鉴别：服务器B → A（选定算法 + CA数字证书）
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>3. 密钥生成：A用CA公钥验证证书，生成预主密钥PMS
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>4. A用服务器公钥加密PMS发给B
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>5. 双方各自从PMS、客户不重数、服务器不重数生成主密钥MS
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>6. 主密钥分割为4个会话密钥（发送/接收各一套加密和MAC密钥）
+</code></pre></div></p>
+<p><strong>防截断攻击</strong>：关闭前发送"关闭TLS记录"，防止攻击者用TCP FIN突然中断连接。</p>
+<p><strong>TLS记录格式</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>类型(1B) | 版本(2B) | 长度(2B) | 加密的[明文+MAC] 
+</code></pre></div>
+序号嵌入MAC计算，防止重排序攻击。</p>
+<h3 id="pgp">PGP（应用层，电子邮件）</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>发送方A：
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  ① 用A私钥SKA对明文X签名
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  ② 生成一次性对称密钥K
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  ③ 用K加密（X + 签名）
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  ④ 用B公钥PKB加密K
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  ⑤ 发送（加密的K + 加密的签名邮件）
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>接收方B：
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>  ① 用B私钥SKB解出K
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>  ② 用K解密邮件得X和A的签名
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>  ③ 用A公钥PKA验证签名
+</code></pre></div>
+<hr />
+<h2 id="76">7.6 防火墙与入侵检测</h2>
+<h3 id="_9">防火墙</h3>
+<p><strong>防火墙定义</strong>：安装在网络边界的特殊路由器，实施访问控制策略。</p>
+<p><strong>两类技术</strong>：</p>
+<p><strong>① 分组过滤路由器</strong>
+- 根据源/目的IP、端口、协议过滤分组
+- <strong>无状态</strong>（每包独立处理）或<strong>有状态</strong>（跟踪连接状态）
+- 优点：简单高效，对用户透明
+- 缺点：不能过滤高层数据</p>
+<p><strong>② 应用网关（代理服务器）</strong>
+- 在应用层打开报文，理解协议内容
+- 所有报文必须经过，逐条检查
+- 优点：可深度过滤，支持用户鉴别
+- 缺点：每种应用需不同网关，处理开销大，对应用不透明</p>
+<h3 id="ids">入侵检测系统 IDS</h3>
+<p>IDS：在入侵开始但<strong>未造成危害</strong>前及时检测，发出告警或执行阻断（误报率高，多数情况不自动阻断）。</p>
+<p><strong>两种检测方法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>原理</th>
+<th>优缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基于特征</strong></td>
+<td>维护已知攻击特征数据库</td>
+<td>只能检测<strong>已知</strong>攻击，大多数IDS采用</td>
+</tr>
+<tr>
+<td><strong>基于异常</strong></td>
+<td>学习正常流量统计特性，检测偏离</td>
+<td>可检测未知攻击，但区分正常/异常困难</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="77">7.7 未来发展方向</h2>
+<ul>
+<li><strong>椭圆曲线密码（ECC）</strong>：已在TLS 1.3握手中占重要地位，用于电子护照、金融系统</li>
+<li><strong>移动安全</strong>：移动支付安全等</li>
+<li><strong>量子密码</strong>：量子计算机将使现有密码体制失效，<strong>后量子密码学（Post-Quantum Cryptography）</strong>正在研究</li>
+</ul>
+<hr />
+<h2 id="_10">参见</h2>
+<ul>
+<li>[[04-网络层]] — IPSec运行在IP层</li>
+<li>[[05-运输层]] — TLS运行在TCP之上</li>
+<li>[[06-应用层]] — PGP用于邮件安全，HTTPS用HTTP</li>
+<li>[[07-网络安全|RSA]] — 公钥加密详解</li>
+<li>[[07-网络安全|数字证书]] — PKI体系</li>
+<li>[[TLS握手]] — 详细流程图</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Content CC BY-NC 4.0 · Slides © Yang Xingguang / NingboTech University · Built with MkDocs-Material
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/aussie-bzhang/cn-network-wiki" target="_blank" rel="noopener" title="GitHub Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
